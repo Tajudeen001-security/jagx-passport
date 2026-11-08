@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jagx-passport"
+version = "1.0.0"
+description = "Portable, verifiable identity for the JagX ecosystem — W3C Verifiable Credentials 2.0 with eddsa-jcs-2022."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "JagX and JRILICENSE" },
+]
+keywords = [
+    "verifiable-credentials",
+    "decentralized-identifiers",
+    "did",
+    "ed25519",
+    "w3c",
+    "digital-identity",
+    "jagx",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security :: Cryptography",
+]
+dependencies = [
+    "fastapi>=0.110,<1.0",
+    "uvicorn[standard]>=0.27,<1.0",
+    "pydantic>=2.6,<3.0",
+    "cryptography>=42.0",
+    "python-multipart>=0.0.9",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://jagx-buddy-connect.name.ng"
+Repository = "https://github.com/Tajudeen001-security/jagx-passport"
+
+[project.scripts]
+jagx-passport = "jagx_passport.cli:main"
+
+[tool.setuptools]
+packages = ["jagx_passport"]
+
+[tool.setuptools.package-data]
+jagx_passport = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
